@@ -16,6 +16,12 @@ Pokedex recover from [Fanzeyi](https://github.com/fanzeyi/pokemon.json/blob/mast
 Only french pokemon name is parse (you can change it in the *JsonReader.cpp* file)<br>
 The Json used for the pokedex only goes up to the 8th generation.<br>
 
+## TODO LIST
+- Use a clean json parser
+- Change the database to a complete one (with all pokemons)
+- Add a visual display for the position
+- Add unit test
+
 ## Credit
 - Vincent DEVINE
 - [Fanzeyi](https://github.com/fanzeyi) *for the database used*
