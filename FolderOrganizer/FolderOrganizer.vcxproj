@@ -128,17 +128,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\Folder.cpp" />
-    <ClCompile Include="Source\Core\Log.cpp" />
+    <ClCompile Include="Source\Folder.cpp" />
+    <ClCompile Include="Source\Log.cpp" />
     <ClCompile Include="Source\FolderOrganizer.cpp" />
-    <ClCompile Include="Source\Core\Utils.cpp" />
-    <ClCompile Include="Source\Wrapper\JsonReader.cpp" />
+    <ClCompile Include="Source\UI.cpp" />
+    <ClCompile Include="Source\Utils.cpp" />
+    <ClCompile Include="Source\Test.cpp" />
+    <ClCompile Include="Source\JsonReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Core\Folder.hpp" />
-    <ClInclude Include="Source\Core\Log.hpp" />
-    <ClInclude Include="Source\Core\Utils.hpp" />
-    <ClInclude Include="Source\Wrapper\JsonReader.hpp" />
+    <ClInclude Include="Source\Folder.hpp" />
+    <ClInclude Include="Source\Log.hpp" />
+    <ClInclude Include="Source\FolderOrganizer.hpp" />
+    <ClInclude Include="Source\Utils.hpp" />
+    <ClInclude Include="Source\Test.hpp" />
+    <ClInclude Include="Source\UI.hpp" />
+    <ClInclude Include="Source\JsonReader.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

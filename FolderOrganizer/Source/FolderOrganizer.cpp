@@ -1,66 +1,76 @@
+#include "FolderOrganizer.hpp"
+
 #include <iostream>
 
-#include "Core/Log.hpp"
-#include "Core/Utils.hpp"
-#include "Core/Folder.hpp"
-#include "Wrapper/JsonReader.hpp"
+#include "UI.hpp"
+#include "Log.hpp"
+#include "Folder.hpp"
+#include "JsonReader.hpp"
 
 int main()
 {
-	Wrapper::JsonReader* jsonReader = Wrapper::JsonReader::Get();
-	std::map<unsigned int, std::string> pokedex = jsonReader->GetPokedex("Asset/pokedex.json");
+	FolderOrganizer fo;
+	fo.Start();
+	fo.Update();
+	fo.Delete();
+}
 
+void FolderOrganizer::Start()
+{
+	m_pokedex = Wrapper::GetPokedex("Asset/pokedex.json");
+}
+
+void FolderOrganizer::Update()
+{
 	std::string input = "";
+	std::string name = "";
+	unsigned int id = 0;
 	bool finishUpdate = true;
+
 	while (finishUpdate)
 	{
-		std::cout << "-----------------------------------------------" << std::endl;
-		std::cout << "Enter pokemon name or id (or 'quit' to exit): " << std::endl;
-		std::cout << "input: ";
+		UI::AskPokemonIdOrName();
 		std::getline(std::cin, input);
 
-		std::cout << "--" << std::endl;
-
-		int value = 0;
-		if (Utils::StringIsInt(input, value)) // ID
+		if (Utils::StringIsInt(input, id)) // USER GIVE AN ID
 		{
-			if (value > Utils::MAX_POKEMON_ID)
+			if (!CheckGoodPokemon(id))
 			{
-				std::cout << "Pokemon id is wrong! (max gen 5)" << std::endl;
+				UI::WrongPokemonIdOrName();
 				continue;
 			}
-
-			std::cout << "Pokemon name: " + Utils::SetCapilizeFirstLetter(pokedex[value]) << std::endl;
-			std::cout << "Pokemon id: " << value << std::endl;
-			std::cout << Core::GetPokemonLocation(value) << std::endl;
 		}
-		else                                  // NAME
+		else                              // USER GIVE AN NAME
 		{
 			Utils::SetLowerCase(input);
-			if (input == "quit")
+			if (input == Utils::EXIT)
 			{
 				finishUpdate = false;
 				continue;
 			}
 
-			unsigned int id = Utils::GetKeyByValue(pokedex, input);
-			if (id == 0)
+			id = Utils::GetKeyByValue(m_pokedex, input);
+			if (!CheckGoodPokemon(id))
 			{
-				std::cout << "Pokemon name is wrong!" << std::endl;
+				UI::WrongPokemonIdOrName();
 				continue;
 			}
-			else
-			{
-				if (value > Utils::MAX_POKEMON_ID)
-				{
-					std::cout << "Pokemon id is wrong! (max gen 5)" << std::endl;
-					continue;
-				}
-
-				std::cout << "Pokemon id: " << id << std::endl;
-				std::cout << "Pokemon name: " << Utils::SetCapilizeFirstLetter(pokedex[id]) << std::endl;
-				std::cout << Core::GetPokemonLocation(id) << std::endl;
-			}
 		}
+
+		name = Utils::SetCapilizeFirstLetter(m_pokedex[id]);
+		Utils::PokemonLocation pokemonLocation = Core::GetPokemonLocation(id);
+		UI::DisplayPokemonLocation(id, name, pokemonLocation);
 	}
+}
+
+void FolderOrganizer::Delete()
+{
+	m_pokedex.clear();
+}
+
+bool FolderOrganizer::CheckGoodPokemon(const unsigned int id)
+{
+	if (id > Utils::MAX_POKEMON_ID || id == 0)
+		return false;
+	return true;
 }

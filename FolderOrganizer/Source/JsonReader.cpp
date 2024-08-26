@@ -3,21 +3,27 @@
 #include <fstream>
 #include <iostream>
 
-#include "../Core/Log.hpp"
-#include "../Core/Utils.hpp"
+#include "Log.hpp"
+#include "Utils.hpp"
 
 namespace Wrapper
 {
-	JsonReader* JsonReader::singleton = nullptr;
-
-	JsonReader* JsonReader::Get()
+	std::string GetValue(const std::string& line, const std::string& key, int decal)
 	{
-		if (!singleton)
-			singleton = new JsonReader;
-		return singleton;
+		unsigned int start = line.find(key);
+		if (start == std::string::npos)
+			return "";
+
+		start = line.find(":", start);
+		if (start == std::string::npos)
+			return "";
+
+		start += decal;
+		unsigned int end = line.find("\"", start + 1);
+		return line.substr(start + 1, end - start - 1);
 	}
 
-	std::map<unsigned int, std::string> JsonReader::GetPokedex(const std::string& fileName)
+	std::map<unsigned int, std::string> GetPokedex(const std::string& fileName)
 	{
 		std::ifstream file(fileName);
 		if (!file.is_open())
@@ -34,7 +40,7 @@ namespace Wrapper
 			if (line.find("\"id\"") != std::string::npos)
 				currentPokemonId = std::stoi(GetValue(line, "\"id\"", 1));
 
-			// French name
+			// Name (only french name)
 			if (line.find("\"french\"") != std::string::npos)
 			{
 				currentPokemonName = GetValue(line, "\"french\"", 2);
@@ -51,24 +57,7 @@ namespace Wrapper
 		}
 
 		file.close();
-
-		LOG("pokedex finish to read", LogLevel::Validation);
-
+		LOG("Pokedex finish to read", LogLevel::Validation);
 		return pokedex;
-	}
-
-	std::string JsonReader::GetValue(const std::string& line, const std::string& key, int decal)
-	{
-		unsigned int start = line.find(key);
-		if (start == std::string::npos)
-			return "";
-
-		start = line.find(":", start);
-		if (start == std::string::npos)
-			return "";
-
-		start += decal;
-		unsigned int end = line.find("\"", start + 1);
-		return line.substr(start + 1, end - start - 1);
 	}
 }

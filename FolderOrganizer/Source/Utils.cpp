@@ -9,7 +9,7 @@
 
 namespace Utils
 {
-	bool StringIsInt(const std::string& input, int& value)
+	bool StringIsInt(const std::string& input, unsigned int& value)
 	{
 		std::stringstream ss(input);
 		int number = 0;
