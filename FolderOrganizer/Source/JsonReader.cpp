@@ -3,7 +3,8 @@
 #include <fstream>
 #include <iostream>
 
-#include "Log.hpp"
+#include "Log_System/Log.hpp"
+
 #include "Utils.hpp"
 
 namespace Wrapper
@@ -27,7 +28,7 @@ namespace Wrapper
 	{
 		std::ifstream file(fileName);
 		if (!file.is_open())
-			LOG("Error opening file", LogLevel::Critical);
+			LOG_ERROR("Failed opening file!");
 
 		std::string line = "";
 		std::map<unsigned int, std::string> pokedex;
@@ -50,14 +51,14 @@ namespace Wrapper
 			if (currentPokemonId != 0 && !currentPokemonName.empty())
 			{
 				pokedex.insert(std::make_pair(currentPokemonId, currentPokemonName));
-				LOG("Add Pokemon[" + std::to_string(currentPokemonId) + "]:" + currentPokemonName + " to pokedex.", LogLevel::Info);
+				LOG_INFO("Add Pokemon[" + std::to_string(currentPokemonId) + "]:" + currentPokemonName + " to pokedex.");
 				currentPokemonId = 0;
 				currentPokemonName = "";
 			}
 		}
 
 		file.close();
-		LOG("Pokedex finish to read", LogLevel::Validation);
+		LOG_INFO("Pokedex finish to read");
 		return pokedex;
 	}
 }

@@ -2,8 +2,9 @@
 
 #include <cmath>
 
+#include "Log_System/Log.hpp"
+
 #include "Utils.hpp"
-#include "Log.hpp"
 
 namespace Core
 {
@@ -19,7 +20,7 @@ namespace Core
 			position -= Utils::CARD_BY_BINDER;
 		}
 
-		LOG("Wrong id given!", LogLevel::Warning);
+		LOG_WARNING("Wrong id given");
 		return 0;
 	}
 

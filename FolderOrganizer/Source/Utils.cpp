@@ -5,8 +5,6 @@
 #include <cctype>
 #include <algorithm>
 
-#include "Log.hpp"
-
 namespace Utils
 {
 	bool StringIsInt(const std::string& input, unsigned int& value)

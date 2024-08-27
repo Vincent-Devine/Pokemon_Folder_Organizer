@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +130,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Folder.cpp" />
-    <ClCompile Include="Source\Log.cpp" />
     <ClCompile Include="Source\FolderOrganizer.cpp" />
     <ClCompile Include="Source\UI.cpp" />
     <ClCompile Include="Source\Utils.cpp" />
@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Folder.hpp" />
-    <ClInclude Include="Source\Log.hpp" />
     <ClInclude Include="Source\FolderOrganizer.hpp" />
     <ClInclude Include="Source\Utils.hpp" />
     <ClInclude Include="Source\Test.hpp" />

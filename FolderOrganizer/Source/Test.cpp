@@ -1,7 +1,7 @@
 #include "Test.hpp"
 
+#include "Log_System/Log.hpp"
 #include "Folder.hpp"
-#include "Log.hpp"
 
 namespace Test
 {
@@ -13,11 +13,11 @@ namespace Test
 
 		if (allTest)
 		{
-			LOG("Test passed!", LogLevel::Info);
+			LOG_INFO("Test passed!");
 		}
 		else
 		{
-			LOG("Test failed!", LogLevel::Warning);
+			LOG_INFO("Test failed!");
 		}
 		return allTest;
 	}
@@ -28,7 +28,7 @@ namespace Test
 		{
 			if (pl.folder <= 0)
 			{
-				LOG("Wrong folder info! Folder given: " + std::to_string(pl.folder) + ", Pokemon id : " + std::to_string(id), LogLevel::Warning);
+				LOG_WARNING("Wrong folder info! Folder given: " + std::to_string(pl.folder) + ", Pokemon id : " + std::to_string(id));
 				return false;
 			}
 			return true;
@@ -38,7 +38,7 @@ namespace Test
 		{
 			if (pl.page <= 0 || pl.page > (Utils::CARD_BY_BINDER / Utils::CARD_PER_PAGE))
 			{
-				LOG("Wrong page info! Page given: " + std::to_string(pl.page) + ", Pokemon id : " + std::to_string(id), LogLevel::Warning);
+				LOG_WARNING("Wrong page info! Page given: " + std::to_string(pl.page) + ", Pokemon id : " + std::to_string(id));
 				return false;
 			}
 			return true;
@@ -48,7 +48,7 @@ namespace Test
 		{
 			if (pl.position <= 0 || pl.position > Utils::CARD_PER_FACE)
 			{
-				LOG("Wrong position info! Position given: " + std::to_string(pl.position) + ", Pokemon id : " + std::to_string(id), LogLevel::Warning);
+				LOG_WARNING("Wrong position info! Position given: " + std::to_string(pl.position) + ", Pokemon id : " + std::to_string(id));
 				return false;
 			}
 			return true;
@@ -66,11 +66,11 @@ namespace Test
 
 			if (unitTest)
 			{
-				LOG("Unit test passed!", LogLevel::Info);
+				LOG_INFO("Unit test passed!");
 			}
 			else
 			{
-				LOG("Unit test failed!", LogLevel::Warning);
+				LOG_INFO("Unit test failed!");
 			}
 
 			return unitTest;

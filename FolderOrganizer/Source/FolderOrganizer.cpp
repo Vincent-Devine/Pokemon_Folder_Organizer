@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "UI.hpp"
-#include "Log.hpp"
 #include "Folder.hpp"
 #include "JsonReader.hpp"
 #include "Test.hpp"
