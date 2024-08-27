@@ -13,10 +13,10 @@ namespace Utils
 		unsigned int position;
 	};
 
-	const int CARD_BY_BINDER = 360;
-	const unsigned int CARD_PER_PAGE = 18;
-	const unsigned int CARD_PER_FACE = 9;
-	const unsigned int MAX_POKEMON_ID = 649;
+	const float CARD_BY_BINDER = 360.f;
+	const int CARD_PER_PAGE = 18.f;
+	const float CARD_PER_FACE = 9.f;
+	const float MAX_POKEMON_ID = 649.f;
 	const std::string EXIT = "exit";
 
 	bool StringIsInt(const std::string& input, unsigned int& value);

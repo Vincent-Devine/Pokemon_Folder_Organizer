@@ -20,7 +20,6 @@ The Json used for the pokedex only goes up to the 8th generation.<br>
 - Use a clean json parser
 - Change the database to a complete one (with all pokemons)
 - Add a visual display for the position
-- Add unit test
 
 ## Credit
 - Vincent DEVINE

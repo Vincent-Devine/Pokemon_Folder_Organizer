@@ -6,6 +6,7 @@
 #include "Log.hpp"
 #include "Folder.hpp"
 #include "JsonReader.hpp"
+#include "Test.hpp"
 
 int main()
 {
@@ -18,6 +19,7 @@ int main()
 void FolderOrganizer::Start()
 {
 	m_pokedex = Wrapper::GetPokedex("Asset/pokedex.json");
+	Test::Test(m_pokedex);
 }
 
 void FolderOrganizer::Update()

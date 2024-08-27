@@ -19,7 +19,7 @@ namespace UI
 
 	void DisplayPokemonLocation(const unsigned int id, const std::string& name, const Utils::PokemonLocation& pokemonLocation)
 	{
-		std::string face = "face";
+		std::string face = "front";
 		if (!pokemonLocation.isFront)
 			face = "back";
 

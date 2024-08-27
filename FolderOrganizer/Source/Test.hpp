@@ -10,6 +10,6 @@ namespace Test
 
 	namespace Unit
 	{
-		bool CheckUnitTest(std::map<unsigned int, std::string> pokedex);
+		bool CheckUnitTest();
 	}
 }
