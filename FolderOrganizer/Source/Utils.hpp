@@ -14,7 +14,7 @@ namespace Utils
 	};
 
 	const float CARD_BY_BINDER = 360.f;
-	const int CARD_PER_PAGE = 18.f;
+	const int CARD_PER_PAGE = 18;
 	const float CARD_PER_FACE = 9.f;
 	const float MAX_POKEMON_ID = 649.f;
 	const std::string EXIT = "exit";

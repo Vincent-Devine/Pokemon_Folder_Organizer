@@ -11,7 +11,7 @@ namespace Wrapper
 {
 	std::string GetValue(const std::string& line, const std::string& key, int decal)
 	{
-		unsigned int start = line.find(key);
+		size_t start = line.find(key);
 		if (start == std::string::npos)
 			return "";
 
